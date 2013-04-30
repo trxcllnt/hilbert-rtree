@@ -143,7 +143,9 @@ package trxcllnt.ds
 				if (parent.isFull)
 				{
 					newParent = handleOverflow(parent, new NonLeafEntry(newlyCreatedNode)) as HRNonLeaf;
-					newParent.adjustNode();
+					if(newParent) {
+						newParent.adjustNode();
+					}
 				}
 				else
 				{
