@@ -185,7 +185,7 @@ package trxcllnt.ds
 			
 			const allNodesInOrder:Array = [overflowingNode].concat(newNode ? newNode : []).concat(siblings);
 			
-			const siblingsEntries:Array = reduce([], siblings, function(acc:Array, sib:HRLeaf):Array { return acc.concat(sib.entries); }) as Array;
+			const siblingsEntries:Array = reduce([], siblings, function(acc:Array, sib:HRNode):Array { return acc.concat(sib.entries); }) as Array;
 			const allEntriesInOrder:Array = overflowingNode.entries.concat(entry).concat(siblingsEntries);
 			// technically this sort is not needed when siblings are in order to the right of overflowingNode,
 			// but that depends on the splitting policy:
