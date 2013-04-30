@@ -9,7 +9,7 @@ package trxcllnt.ds
 
 	internal class NonLeafEntry implements Entry
 	{
-		private var _boundingBox:Rectangle;
+		private var _boundingBox:Rectangle = HRNode.EMPTY_RECTANGLE;
 		public function get boundingBox():Rectangle { return _boundingBox; }
 		
 		private var _child:HRNode;
