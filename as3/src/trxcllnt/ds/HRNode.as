@@ -48,15 +48,15 @@ package trxcllnt.ds
 		internal function get overflowSiblings():Array
 		{
 			// here we assume the 2-to-3 splitting policy, which means just one cooperating sibling
-			const nbor:HRNode = rightNeighbor;
+			const nbor:HRNode = getRightNeighbor();
 			return nbor ? [nbor] : [];
 		}
 		
 		internal function get underflowSiblings():Array
 		{
 			// 2-to-3 policy says two cooperating nodes for underflow
-			const rNeighbor:HRNode = rightNeighbor;
-			const lNeighbor:HRNode = leftNeighbor;
+			const rNeighbor:HRNode = getRightNeighbor();
+			const lNeighbor:HRNode = getLeftNeighbor();
 			var result:Array = [];
 			if (lNeighbor)
 			{
@@ -81,23 +81,23 @@ package trxcllnt.ds
 			return parentEntries.indexOf(entryContainingMe);
 		}
 		
-		private function get rightNeighbor():HRNode
+		private function getRightNeighbor():HRNode
 		{
-			return neighbor(1);
+			return getNeighbor(1);
 		}
 		
-		private function get leftNeighbor():HRNode
+		private function getLeftNeighbor():HRNode
 		{
-			return neighbor(-1);
+			return getNeighbor(-1);
 		}
 		
-		private function neighbor(distance:int):HRNode
+		private function getNeighbor(displacement:int):HRNode
 		{
 			if (parent == null)
 			{
 				return null;
 			}
-			const neighborEntry:NonLeafEntry = parent.entries[indexInParent + distance];
+			const neighborEntry:NonLeafEntry = parent.entries[indexInParent + displacement];
 			return neighborEntry ? neighborEntry.child : null;
 		}	
 		
