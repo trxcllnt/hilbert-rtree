@@ -41,6 +41,9 @@ package trxcllnt.ds
 			const d:HRDatum = find(item);
 			
 			if(d != null) {
+				
+				if(newSize.equals(d.boundingBox)) return this;
+				
 				remove(d.boundingBox, item);
 			}
 			

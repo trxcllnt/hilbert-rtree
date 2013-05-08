@@ -16,14 +16,17 @@ package trxcllnt.ds
 		protected var _minBoundingRectangle:Rectangle;
 		public function get mbr():Rectangle { return _minBoundingRectangle; }
 		
-		protected var _entries:Array;
+		protected var _entries:Array = [];
 		public function get entries():Array { return _entries; }
 		public function set entries(newEntries:Array):void
 		{
-			_entries = newEntries;
-			for each (var entry:Entry in newEntries)
-			{
-				entry.parent = this as HRNonLeaf;
+			if(newEntries == null) {
+				_entries.length = 0;
+			} else {
+				_entries = newEntries;
+				for each (var entry:Entry in newEntries) {
+					entry.parent = this as HRNonLeaf;
+				}
 			}
 			adjustNode();
 		}
