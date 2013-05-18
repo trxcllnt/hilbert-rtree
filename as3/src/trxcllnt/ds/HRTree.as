@@ -28,6 +28,12 @@ package trxcllnt.ds
 			}) as HRDatum;
 		}
 		
+		public function getBounds(item:*):Rectangle {
+			if(item == null) return null;
+			
+			return find(item).boundingBox.clone();
+		}
+		
 		public function insert(r:Rectangle, item:* = null):HRTree
 		{
 			const datum:HRDatum = new HRDatum(r, item);
